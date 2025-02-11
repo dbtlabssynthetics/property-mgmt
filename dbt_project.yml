@@ -1,0 +1,50 @@
+# Name your project (use lowercase and underscores)
+name: 'dbt_property_mgmt'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+# dbt Cloud manages profiles, so we leave this as 'default'.
+profile: 'default'
+
+# Define paths for different dbt assets
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Where compiled artifacts are stored
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  dbt_property_mgmt:  # This should match your project name
+    staging:
+      +materialized: view  # Staging models default to views
+    marts:
+      +materialized: table  # Fact & Dimension tables default to tables
+    intermediate:
+      +materialized: ephemeral  # Temp transformations don't persist
+    snapshots:
+      +materialized: snapshot  # Ensure snapshots use correct materialization
+
+# Configurations for Seeds (CSV data loading)
+seeds:
+  dbt_property_mgmt:
+    +quote_columns: false  # Prevents dbt from automatically quoting columns
+
+# Configurations for Tests (applies to generic & singular tests)
+tests:
+  dbt_property_mgmt:
+    +store_failures: true  # Store test failures for debugging
+    +severity: warn  # Change to 'error' if failures should break the build
+
+# Optional: Default behavior for dbt commands
+query-comment:
+  comment: "Run by dbt Cloud - {{ invocation_id }}"
+  append: true

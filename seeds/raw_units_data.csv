@@ -1,0 +1,6 @@
+unit_id,property_id,unit_number,unit_size_sqft,monthly_rent
+1,101,A101,750,1200
+2,102,B202,900,1500
+3,103,C303,1100,1800
+4,104,D404,1300,2000
+5,105,E505,1500,2200
