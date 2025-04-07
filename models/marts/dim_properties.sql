@@ -41,11 +41,11 @@ SELECT
     COALESCE(ar.avg_rent, 0) AS avg_rent, -- Default to 0 if no rent data available
 
     -- Calculate occupancy rate: number of units with rent vs total units
-    CASE 
-        WHEN p.num_units > 0 THEN 
-            (COUNT(u.property_id) * 1.0 / p.num_units) * 100
-        ELSE 0 
-    END AS occupancy_rate,
+    -- CASE 
+    --     WHEN p.num_units > 0 THEN 
+    --         (COUNT(u.property_id) * 1.0 / p.num_units) * 100
+    --     ELSE 0 
+    -- END AS occupancy_rate,
 
     -- Rental application insights
     COALESCE(ra.total_applications, 0) AS total_applications,
