@@ -2,6 +2,9 @@ version: 2
 
 models:
   - name: stg_properties
+    access: public
+    group: management_team
+    description: "Staging model for property data with cleaned and validated fields."
     versions:
       - v: 1
         config:
@@ -16,11 +19,18 @@ models:
         config:
           contract:
             enforced: false
-        description: "v2 adds `property_type` column"
+        description: "Staging model for property data with cleaned and validated fields: v2 includes `address` & `num_units` column"
         columns:
-          - name: property_id
-            data_type: int
-          - name: property_name
-            data_type: string
-          - name: address
-          - name: num_units
+        - name: property_id
+          description: "Unique identifier for the property."
+          data_type: int
+          tests:
+            - unique
+            - not_null
+        - name: property_name
+          description: "The name of the property."
+          data_type: string
+        - name: address
+          description: "The property address."
+        - name: num_units
+          description: "Total number of units in the property."
