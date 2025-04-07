@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_properties
+    versions:
+      - v: 1
+        config:
+          contract:
+            enforced: false
+        columns:
+          - name: property_id
+            data_type: int
+          - name: property_name
+            data_type: string
+      - v: 2
+        config:
+          contract:
+            enforced: false
+        description: "v2 adds `property_type` column"
+        columns:
+          - name: property_id
+            data_type: int
+          - name: property_name
+            data_type: string
+          - name: address
+          - name: num_units

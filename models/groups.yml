@@ -1,0 +1,4 @@
+groups:
+  - name: management_team
+    owner:
+      email: "property-team@example.com"
