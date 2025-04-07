@@ -105,27 +105,6 @@ models:
       - name: monthly_rent
         description: "Monthly rent amount for the lease."
 
-  - name: stg_properties
-    access: public
-    group: management_team
-    description: "Staging model for property data with cleaned and validated fields."
-    config:
-      contract:
-        enforced: false
-    columns:
-      - name: property_id
-        description: "Unique identifier for the property."
-        data_type: int
-        tests:
-          - unique
-          - not_null
-      - name: property_name
-        description: "The name of the property."
-      - name: address
-        description: "The property address."
-      - name: num_units
-        description: "Total number of units in the property."
-
   - name: stg_units
     description: "Staging model for unit data, standardizing rents and sizes."
     columns:
